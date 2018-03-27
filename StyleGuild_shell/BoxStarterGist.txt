@@ -1,0 +1,14 @@
+Enable-RemoteDesktop
+Set-CornerNavigationOptions -EnableUsePowerShellOnWinX
+Set-ExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions   -EnableShowFullPathInTitlebar
+Set-TaskbarOptions -Size Small -Lock
+
+chocolatey feature enable -n=allowGlobalConfirmation
+cinst nodejs.install
+choco install GoogleChrome 
+chocolatey feature disable -n=allowGlobalConfirmation
+
+npm install --global gulp
+npm install --global --production windows-build-tools
+#npm install -g generator-fabricator
+#npm install -g yo
