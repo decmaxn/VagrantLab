@@ -42,4 +42,5 @@ packer build --only=virtualbox-iso -var 'iso_url=./iso/en_windows_server_version
 Mount-DiskImage (get-item 'C:\<fullpath>\WinSrv2019\iso\en_windows_server_version_2004_updated_aug_2020_x64_dvd_1f6b0779.iso').VersionInfo.FileName -PassThru -ErrorAction Stop
 Get-WindowsImage -ImagePath e:\sources\install.wim
 ```
+Blocked by "No Images are available" during installation. It is caused by the production key, removing it from Autounattend.xml bypassed this error. I have not find out yet why the product key caused this problem.
 
