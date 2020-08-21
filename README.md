@@ -35,3 +35,11 @@ copy .\packer-windows\scripts\vm-guest-tools.bat scripts\
 copy .\packer-windows\scripts\win-updates.ps1 scripts\
 copy .\packer-windows\windows_server_2004.json windows_server_2004.json
 ```
+Download iso file from MSDN site https://my.visualstudio.com/ Downloads section and copy it over; also click on that iso's info and update json file with the them. Mount the iso file(or manually) and get the wim name, confirme and update the index number in json file.
+```
+mkdir iso ; copy Downloads\en_windows_server_version_2004_updated_aug_2020_x64_dvd_1f6b0779.iso iso\
+packer build --only=virtualbox-iso -var 'iso_url=./iso/en_windows_server_version_2004_updated_aug_2020_x64_dvd_1f6b0779.iso' .\windows_server_2004.json
+Mount-DiskImage (get-item 'C:\<fullpath>\WinSrv2019\iso\en_windows_server_version_2004_updated_aug_2020_x64_dvd_1f6b0779.iso').VersionInfo.FileName -PassThru -ErrorAction Stop
+Get-WindowsImage -ImagePath e:\sources\install.wim
+```
+
