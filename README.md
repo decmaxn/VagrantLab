@@ -44,3 +44,15 @@ Get-WindowsImage -ImagePath e:\sources\install.wim
 ```
 Blocked by "No Images are available" during installation. It is caused by the production key, removing it from Autounattend.xml bypassed this error. I have not find out yet why the product key caused this problem.
 
+After the build is done and created a windows_server_2004_virtualbox.box box, test it by vagrant.
+```
+vagrant box add windows_server_2004_virtualbox windows_server_2004_virtualbox.box
+vagrant init windows_server_2004_virtualbox
+vagrant up
+vagrant rdp
+```
+BTW, Windows 2019 -2004 actually doesn't have Gui feature to be installed.
+```
+# Install-WindowsFeature Server-Gui-Shell, Server-Gui-Mgmt-Infra –Restart
+Get-WindowsFeature -name *gui*
+```
